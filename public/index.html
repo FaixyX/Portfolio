@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<link rel="icon" href="./Favicon.png" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet" />
+	<title>
+		<%= htmlWebpackPlugin.options.title %>
+	</title>
+</head>
+
+<body id="app-theme" class="app-theme">
+	<noscript>
+		<strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't
+				work properly without JavaScript enabled. Please enable it to
+				continue.</strong>
+	</noscript>
+	<div id="app"></div>
+	<script>
+		(function () {
+			let devtools = { isOpen: false };
+			let threshold = 160;
+
+			const clearPage = () => {
+				// Clear the body content
+				document.body.innerHTML = '';
+				// Optionally, you can also hide the body to ensure nothing is visible
+				document.body.style.display = 'none';
+			};
+
+			const check = () => {
+				const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+				const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+				devtools.isOpen = widthThreshold || heightThreshold;
+				if (devtools.isOpen) {
+					alert('Please close DevTools and refresh the page to continue using the website.');
+					clearPage();
+				}
+			};
+
+			window.addEventListener('resize', check);
+			check();
+		})();
+	</script>
+	<!-- built files will be auto injected -->
+</body>
+
+<!-- <script src="https://gitcdn.xyz/repo/DungGramer/disable-devtool/master/disable-devtool.min.js" defer></script> -->
+<!-- <script src="https://cdn.staticaly.com/gh/DungGramer/disable-devtool/cbf447f/disable-devtool.min.js" defer></script> -->
+<!-- <script src="https://dunggramer.github.io/disable-devtool/disable-devtool.min.js" defer></script> -->
+
+</html>
